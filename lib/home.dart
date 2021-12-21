@@ -41,7 +41,8 @@ class _HomePageState extends State<HomePage> {
                           .showSnackBar(SnackBar(content: Text(state.message)));
                     }
                     else if (state is SenddataLoaded) {
-                      Scaffold.of(context).showSnackBar(const SnackBar(content: Text("data sent to server")));
+                      String result = state.strResult +" sent to server";
+                      Scaffold.of(context).showSnackBar(SnackBar(content: Text(result)));
                     }
                   },
                   builder: (context, state) {
@@ -157,7 +158,7 @@ class _HomePageState extends State<HomePage> {
 
   void widgetInitializeView(BuildContext context) {
     final senddataCubit = BlocProvider.of<SenddataCubit>(context);
-    senddataCubit.sendData();
+    senddataCubit.sendData("myData");
   }
 
 }
